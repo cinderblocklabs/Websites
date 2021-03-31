@@ -8,7 +8,7 @@
         <title>HTML Web Template</title>
     </head>
     <body>
-        <nav id="navbar" class="navbar navbar-style flex contrasted">
+        <nav id="navbar" class="navbar navbar-style flex-row contrasted">
             <div id="navbar-logo">
                 <a href="#"><img class="navbar-logo circular-img" src="https://preppykitchen.com/wp-content/uploads/2019/06/Chocolate-cake-recipe-1200a.jpg">
                 </a>
@@ -56,12 +56,39 @@
                 </section>
             </section>
           
-
+            <!-- NEEDS JAVASCRIPT THAT ADDS EACH CHECKED ITEM INTO PRICE TOTAL -->
             <header class="contrasted">Services</header>
-            <section>
+            <section class="flex-row">
                 <article>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <table id="services-table">
+                        <caption>Services Offered</caption>
+                        <tr>
+                            <th>Standard Cake</th>
+                            <td>$20</td>
+                            <td><input type="checkbox" checked></td>
+                        </tr>
+                        <tr>
+                            <th>Custom Lettering</th>   
+                            <td>$5</td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <th>Vegetarian Ingredients</th>   
+                            <td>$10</td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <th>Custom Shape</th>   
+                            <td>$7.50</td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <th>Total</th>
+                            <td><input type="text" readonly></td>
+                        </tr>
+                    </table>
                 </article>
+
             </section>
             
 

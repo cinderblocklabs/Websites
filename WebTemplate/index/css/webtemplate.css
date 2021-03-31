@@ -167,6 +167,22 @@
             align-content: center;
         }
 
+        #services-table {
+            border: solid 0.5px grey;
+            border-radius: 2%;
+            /* border-collapse: collapse; */
+            padding: 10px;
+            width: 100%;
+        }
+
+        caption {
+            font-size: 20px;
+            line-height:5em;
+        }
+
+        th, td {
+            padding: 15px;
+        }
 
         .collapsible {
             /* MOUSE TURNS INTO HAND THINGY */
