@@ -2,9 +2,10 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
         <link rel="stylesheet" href="css\webtemplate.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pinyon+Script&display=swap" rel="stylesheet">   
+        <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pinyon+Script&display=swap" rel="stylesheet">   
         <title>HTML Web Template</title>
     </head>
     <body>
@@ -20,9 +21,6 @@
                     <li class="navbar-link"><a href="" class="contrasted">Contact</a></li>
                 </ul>
             </div>
-            <!-- <div>
-                <li class="navbar-link"><a href="" class="contrasted">Contact</a></li>
-            </div>       -->
         </nav>
         <header id="main-header" class="jumbotron">
             <p id="titles">
@@ -61,36 +59,108 @@
             <section class="flex-row">
                 <article>
                     <table id="services-table">
-                        <caption>Services Offered</caption>
-                        <tr>
-                            <th>Standard Cake</th>
-                            <td>$20</td>
-                            <td><input type="checkbox" checked></td>
-                        </tr>
-                        <tr>
-                            <th>Custom Lettering</th>   
-                            <td>$5</td>
-                            <td><input type="checkbox"></td>
-                        </tr>
-                        <tr>
-                            <th>Vegetarian Ingredients</th>   
-                            <td>$10</td>
-                            <td><input type="checkbox"></td>
-                        </tr>
-                        <tr>
-                            <th>Custom Shape</th>   
-                            <td>$7.50</td>
-                            <td><input type="checkbox"></td>
-                        </tr>
-                        <tr>
-                            <th>Total</th>
-                            <td><input type="text" readonly></td>
-                        </tr>
+                        <tbody>
+                            <caption>Services Offered</caption>
+                            <tr>
+                                <th>Standard Cake</th>
+                                <td>20</td>
+                                <td><input id="table-data" name="table-data" type="checkbox" checked disabled></td>
+                            </tr>
+                            <tr>
+                                <th>Custom Lettering</th>   
+                                <td>5</td>
+                                <td><input id="table-data name="table-data" type="checkbox" ></td>
+                            </tr>
+                            <tr>
+                                <th>Vegan Ingredients</th>   
+                                <td>10</td>
+                                <td><input id="table-data" name="table-data" type="checkbox" ></td>
+                            </tr>
+
+                            <!-- Should come with selector for different shapes -->
+                            <tr>
+                                <th>Custom Shape</th>   
+                                <td>2.50</td>
+                                <td><input id="table-data" name="table-data" type="checkbox" ></td>
+                            </tr>
+                            <tr>
+                                <th>Total</th>
+                                <td><input id="total" name="table-total" type="text" readonly></td>
+                            </tr>
+                        </tbody>
+
+                        
+
                     </table>
                 </article>
-
             </section>
             
+            <script>
+
+                /* Needs to automatically add checked items to total */
+                var servicesTable = document.getElementById('services-table'),rIndex,cIndex;
+                var total = document.getElementById('total');
+                var cashTotal = 0; 
+
+                function getTableCellValues(table) {
+
+                    var total=0;
+
+                    // rows
+                    for(var i = 0; i < table.rows.length - 1; i++) {
+
+                        console.log("row = " + i);
+                        
+                        // cells
+                        for (var j = 1; j < table.rows[i].cells.length; j++) {
+                            
+                            var cellContent = table.rows[i].cells[j].innerHTML;
+                            var price = table.rows[i].cells[1].innerHTML;
+                            var checkbox = table.rows[i].cells[2].innerHTML;
+
+                            var parsedPrice = parseFloat(price);
+                           
+                            
+                            // console.log("Checked = " + checkbox);
+                            
+                            // if(isChecked("table-data" , j) == true) {
+                                
+                                //     total += price;
+                                //     console.log(total);
+                                
+                                // }
+                                
+                                // console.log(checkbox.id);
+                                
+                                // isChecked(checkbox.id);
+
+                                total += parsedPrice;
+                                
+                                // KEEP GETTING TWO 'TOTAL' RESULTS FOR EACH ROW
+                                console.log(total);
+                            }
+                        }
+                }
+
+                // needs to be able to retrieve tag attribute information from "checked"
+                function isChecked(id, index) {
+
+                    var checkboxStates = document.getElementById(id)[index].checked;
+
+                    console.log(checkboxStates);
+
+                    // if(checkboxStates = true) {
+                        
+                    //     return true;
+
+                    // }
+
+                    // return false;
+                }
+
+                getTableCellValues(servicesTable);
+
+            </script>
 
             <header class="contrasted">Contact</header>
             <section id="contact" class="flex">
