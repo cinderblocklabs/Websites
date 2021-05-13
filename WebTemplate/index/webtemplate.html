@@ -63,24 +63,24 @@
                             <caption>Services Offered</caption>
                             <tr>
                                 <th>Standard Cake</th>
-                                <td>20</td>
+                                <td class="price">20</td>
                                 <td><input id="table-data" name="table-data" type="checkbox" onchange="getTableCellValues()"></td>
                             </tr>
                             <tr>
                                 <th>Custom Lettering</th>   
-                                <td>5</td>
+                                <td class="price">5</td>
                                 <td><input id="table-data" name="table-data" type="checkbox" onchange="getTableCellValues()"></td>
                             </tr>
                             <tr>
                                 <th>Vegan Ingredients</th>   
-                                <td>10</td>
+                                <td class="price">10</td>
                                 <td><input id="table-data" name="table-data" type="checkbox" onchange="getTableCellValues()"></td>
                             </tr>
 
                             <!-- Should come with selector for different shapes -->
                             <tr>
                                 <th>Custom Shape</th>   
-                                <td>2.50</td>
+                                <td class="price">2.50</td>
                                 <td><input id="table-data" name="table-data" type="checkbox" onchange="getTableCellValues()"></td>
                             </tr>
                             <tr>
@@ -96,51 +96,37 @@
             </section>
             
             <script>
-
-                // Every time I check a box, it scans the table to see how many boxes are checked.
-                // If a box is checked, it adds the corresponding price of that item to the total.
-                // If a box is unchecked, it subtracts the corresponding price of that item to the total.
                 function getTableCellValues() {
 
-                    var table = document.getElementById('services-table'),rIndex,cIndex;
+                    // table extraction
+                    var table = document.getElementById('services-table');
 
-                    // rows
-                    for(var i = 0; i < table.rows.length - 1; i++) {
+                    // total textfield extraction
+                    var totalField = document.getElementById('total');
 
-                        console.log("row = " + i);
+                    // checkboxes
+                    var checkboxes = table.getElementsByTagName('INPUT');
+
+                    // prices
+                    var prices = table.getElementsByClassName('price');
+
+
+                    var total = 0;
+
+                    for(var i = 0; i < checkboxes.length; i++) {
                         
-                        // cells
-                        for (var j = 0; j < table.rows[i].cells.length; j++) {
+                        if(checkboxes[i].checked) {
                             
-                            // this is for getting the values of the cells
-                            var cellContent = table.rows[i].cells[j].innerHTML;
-                            var price = table.rows[i].cells[1].innerHTML;
-                            var checkbox = table.rows[i].cells[2].getAttribute("checked");
+                            var parsedPrice = parseFloat(prices[i].innerHTML);
+                            console.log("checkbox checked = " + checkboxes[i].checked);
 
-                            var parsedPrice = parseFloat(price);
+                            total += parsedPrice;
+                            console.log('total = ' + total)
+
+                            totalField.placeholder = total;
                             
-                            console.log("column = " + j);
-
-                            // test to see if price column is being detected.
-                            if(j == 1) {
-                                console.log("price column value = " + parsedPrice);
-                            }
-                            
-                            // add price from this column to total
-                            if(checkbox == true) {
-                                total = total + price[j];
-                            }
-
-                            // subtract price from this column to total
-                            if(total != 0 && checkbox != true) {
-                                total = total - price[j];
-                            }
                         }
                     }
-                }
-
-                function checkboxAlert() {
-                    console.log("Box Checked");
                 }
 
             </script>
