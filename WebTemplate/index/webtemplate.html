@@ -64,24 +64,24 @@
                             <tr>
                                 <th>Standard Cake</th>
                                 <td>20</td>
-                                <td><input id="table-data" name="table-data" type="checkbox" checked disabled></td>
+                                <td><input id="table-data" name="table-data" type="checkbox" onchange="getTableCellValues()"></td>
                             </tr>
                             <tr>
                                 <th>Custom Lettering</th>   
                                 <td>5</td>
-                                <td><input id="table-data name="table-data" type="checkbox" ></td>
+                                <td><input id="table-data" name="table-data" type="checkbox" onchange="getTableCellValues()"></td>
                             </tr>
                             <tr>
                                 <th>Vegan Ingredients</th>   
                                 <td>10</td>
-                                <td><input id="table-data" name="table-data" type="checkbox" ></td>
+                                <td><input id="table-data" name="table-data" type="checkbox" onchange="getTableCellValues()"></td>
                             </tr>
 
                             <!-- Should come with selector for different shapes -->
                             <tr>
                                 <th>Custom Shape</th>   
                                 <td>2.50</td>
-                                <td><input id="table-data" name="table-data" type="checkbox" ></td>
+                                <td><input id="table-data" name="table-data" type="checkbox" onchange="getTableCellValues()"></td>
                             </tr>
                             <tr>
                                 <th>Total</th>
@@ -97,14 +97,12 @@
             
             <script>
 
-                /* Needs to automatically add checked items to total */
-                var servicesTable = document.getElementById('services-table'),rIndex,cIndex;
-                var total = document.getElementById('total');
-                var cashTotal = 0; 
+                // Every time I check a box, it scans the table to see how many boxes are checked.
+                // If a box is checked, it adds the corresponding price of that item to the total.
+                // If a box is unchecked, it subtracts the corresponding price of that item to the total.
+                function getTableCellValues() {
 
-                function getTableCellValues(table) {
-
-                    var total=0;
+                    var table = document.getElementById('services-table'),rIndex,cIndex;
 
                     // rows
                     for(var i = 0; i < table.rows.length - 1; i++) {
@@ -112,53 +110,38 @@
                         console.log("row = " + i);
                         
                         // cells
-                        for (var j = 1; j < table.rows[i].cells.length; j++) {
+                        for (var j = 0; j < table.rows[i].cells.length; j++) {
                             
+                            // this is for getting the values of the cells
                             var cellContent = table.rows[i].cells[j].innerHTML;
                             var price = table.rows[i].cells[1].innerHTML;
-                            var checkbox = table.rows[i].cells[2].innerHTML;
+                            var checkbox = table.rows[i].cells[2].getAttribute("checked");
 
                             var parsedPrice = parseFloat(price);
-                           
                             
-                            // console.log("Checked = " + checkbox);
-                            
-                            // if(isChecked("table-data" , j) == true) {
-                                
-                                //     total += price;
-                                //     console.log(total);
-                                
-                                // }
-                                
-                                // console.log(checkbox.id);
-                                
-                                // isChecked(checkbox.id);
+                            console.log("column = " + j);
 
-                                total += parsedPrice;
-                                
-                                // KEEP GETTING TWO 'TOTAL' RESULTS FOR EACH ROW
-                                console.log(total);
+                            // test to see if price column is being detected.
+                            if(j == 1) {
+                                console.log("price column value = " + parsedPrice);
+                            }
+                            
+                            // add price from this column to total
+                            if(checkbox == true) {
+                                total = total + price[j];
+                            }
+
+                            // subtract price from this column to total
+                            if(total != 0 && checkbox != true) {
+                                total = total - price[j];
                             }
                         }
+                    }
                 }
 
-                // needs to be able to retrieve tag attribute information from "checked"
-                function isChecked(id, index) {
-
-                    var checkboxStates = document.getElementById(id)[index].checked;
-
-                    console.log(checkboxStates);
-
-                    // if(checkboxStates = true) {
-                        
-                    //     return true;
-
-                    // }
-
-                    // return false;
+                function checkboxAlert() {
+                    console.log("Box Checked");
                 }
-
-                getTableCellValues(servicesTable);
 
             </script>
 
