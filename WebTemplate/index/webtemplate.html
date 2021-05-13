@@ -81,21 +81,20 @@
                             <tr>
                                 <th>Custom Shape</th>   
                                 <td class="price">2.50</td>
-                                <td><input id="table-data" name="table-data" type="checkbox" onchange="getTableCellValues()"></td>
+                                <td><input id="custom-shape" name="custom-shape" type="checkbox" onchange="getTableCellValues()"></td>
                             </tr>
                             <tr>
                                 <th>Total</th>
                                 <td><input id="total" name="table-total" type="text" readonly></td>
                             </tr>
                         </tbody>
-
-                        
-
                     </table>
                 </article>
             </section>
             
             <script>
+
+                // This function matches checkbox with price and adds price to total if box is checked. 
                 function getTableCellValues() {
 
                     // table extraction
@@ -110,19 +109,26 @@
                     // prices
                     var prices = table.getElementsByClassName('price');
 
-
+                    // counter variable
                     var total = 0;
 
                     for(var i = 0; i < checkboxes.length; i++) {
                         
                         if(checkboxes[i].checked) {
                             
+                            // parse price
                             var parsedPrice = parseFloat(prices[i].innerHTML);
+
+                            // console log checkbox status
                             console.log("checkbox checked = " + checkboxes[i].checked);
 
+                            // add parsed prices to total
                             total += parsedPrice;
+
+                            // console log total
                             console.log('total = ' + total)
 
+                            // export total to total textfield
                             totalField.placeholder = total;
                             
                         }
@@ -134,20 +140,26 @@
             <header class="contrasted">Contact</header>
             <section id="contact" class="flex">
                 <article>
-                   <form>
-                       <p>
-                            <label>Name</label>
-                            <input id="name" name="name" type="text">
-                       </p>
-                       <p>
-                            <label>Email</label>
-                            <input id="name" name="name" type="text">
-                        </p>
-                        <p>
-                            <label>Message</label>
-                            <textarea id="message-area" name="message-area" rows="4" cols="20"></textarea>
-                        </p>
-                       
+                   <form id="contact-form" method="POST" action="https://formspree.io/f/xoqyedvy">
+                        <div id="form-fields">
+                            <p>
+                                <label>Name</label><br>
+                                <input id="name" name="name" type="text" required>
+                            </p>
+                            <p>
+                                <label>Email</label><br>
+                                <input id="name" name="name" type="text" required>
+                            </p>
+                        </div>
+                        <div id="form-submit"> 
+                            <p>
+                                <label>Message</label><br>
+                                <textarea id="message-area" name="message-area" rows="8" cols="30"></textarea>
+                            </p>
+                            <p>
+                                <center><button type="submit">Submit</button></center>
+                            </p>
+                        </div>
                    </form>
                 </article>
             </section>
@@ -156,7 +168,7 @@
             <div id="footer-container">
                 <div id="icons">
                     <h2>Follow Us!</h2>
-                    <ul id="icon-list">
+                    <ul id="icon-list" class="flex">
                         <li><a href=""><img class="footer-sclmd-icons" src="images\facebook2.png"></a></li>
                         <li><a href=""><img class="footer-sclmd-icons" src="images\instagram1.png"></a></li>
                         <li><a href=""><img class="footer-sclmd-icons" src="images\twitter2.png"></a></li>
