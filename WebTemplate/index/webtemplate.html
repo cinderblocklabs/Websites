@@ -9,20 +9,20 @@
         <title>HTML Web Template</title>
     </head>
     <body>
-        <nav id="navbar" class="navbar navbar-style flex-row contrasted">
+        <nav id="navbar" class="navbar navbar-blurred flex-row contrasted-brown">
             <div id="navbar-logo">
                 <a href="#"><img class="navbar-logo circular-img" src="https://preppykitchen.com/wp-content/uploads/2019/06/Chocolate-cake-recipe-1200a.jpg">
                 </a>
             </div>
             <div id="navbar-links" class="navbar-centered">
                 <ul>
-                    <li class="navbar-link"><a href="" class="contrasted">About</a></li>
-                    <li class="navbar-link"><a href="" class="contrasted">Services</a></li>
-                    <li class="navbar-link"><a href="" class="contrasted">Contact</a></li>
+                    <li class="navbar-link"><a href="" class="contrasted-brown">About</a></li>
+                    <li class="navbar-link"><a href="" class="contrasted-brown">Services</a></li>
+                    <li class="navbar-link"><a href="" class="contrasted-brown">Contact</a></li>
                 </ul>
             </div>
         </nav>
-        <header id="main-header" class="jumbotron">
+        <header id="main-header" class="jumbotron fancy-font">
             <p id="titles">
                 <h1>Gateau Chocolat</h1>
                 <h2>Mmmmh...delish</h2>
@@ -30,7 +30,7 @@
             
         </header>
         <main>
-            <header class="contrasted">About</header>
+            <header class="contrasted-brown">About</header>
             <section id="first-section" class="flex">
                 <section class="flex-reverse-row">
                     <article class="flex-row-img-left">
@@ -39,7 +39,7 @@
                         </p>
                     </article>
                     <div>
-                        <img src="https://qvc.scene7.com/is/image/QVC/m/08/m121408.001?$aempdzoom$">
+                        <img class="flex-picture" src="https://qvc.scene7.com/is/image/QVC/m/08/m121408.001?$aempdzoom$">
                     </div>
                 </section>
                 <section class="flex-row">
@@ -49,22 +49,30 @@
                         </p>
                     </article>
                     <div>
-                        <img src="https://www.wilton.com/dw/image/v2/AAWA_PRD/on/demandware.static/-/Sites-wilton-project-master/default/dw61637d61/images/project/WLRECIP-766/dark-chocolate-orange-cake-recipe.jpg?sw=800&sh=800">
+                        <img class="flex-picture" src="https://www.wilton.com/dw/image/v2/AAWA_PRD/on/demandware.static/-/Sites-wilton-project-master/default/dw61637d61/images/project/WLRECIP-766/dark-chocolate-orange-cake-recipe.jpg?sw=800&sh=800">
                     </div>
                 </section>
             </section>
-          
-            <!-- NEEDS JAVASCRIPT THAT ADDS EACH CHECKED ITEM INTO PRICE TOTAL -->
-            <header class="contrasted">Services</header>
+
+            <header class="contrasted-brown">Services</header>
             <section class="flex-row">
                 <article>
                     <table id="services-table" class="bordered">
                         <tbody>
                             <caption>Services Offered</caption>
+
+                            <!-- COLUMN HEADERS -->
+                            <tr>
+                                <th>Cake Type</th>
+                                <th>Price</th>
+                                <th>Selection</th>
+                            </tr>
+
+                            <!-- ROW HEADERS -->
                             <tr>
                                 <th>Standard Cake</th>
                                 <td class="price">20</td>
-                                <td><input id="table-data" name="table-data" type="checkbox" onchange="getTableCellValues()"></td>
+                                <td><input id="table-data" name="table-data" type="checkbox" onchange="getTableCellValues()" checked disabled></td>
                             </tr>
                             <tr>
                                 <th>Custom Lettering</th>   
@@ -86,6 +94,7 @@
                             <tr>
                                 <th>Total</th>
                                 <td><input id="total" name="table-total" type="text" readonly></td>
+                                <td><button class="button-style" type=submit>Checkout</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -137,7 +146,7 @@
 
             </script>
 
-            <header class="contrasted">Contact</header>
+            <header class="contrasted-brown">Contact</header>
             <section id="contact" class="flex">
                 <article>
                    <form id="contact-form" class="bordered" method="POST" action="https://formspree.io/f/xoqyedvy">
@@ -157,18 +166,18 @@
                                 <textarea id="message-area" name="message-area" rows="8" cols="30"></textarea>
                             </p>
                             <p>
-                                <center><button type="submit">Submit</button></center>
+                                <center><button class="button-style" type="submit">Submit</button></center>
                             </p>
                         </div>
                    </form>
                 </article>
             </section>
         </main>
-        <footer class="contrasted">
+        <footer class="contrasted-brown">
             <div id="footer-container">
                 <div id="icons">
                     <h2>Follow Us!</h2>
-                    <ul id="icon-list" class="flex">
+                    <ul id="icon-list" class="flex-row">
                         <li><a href=""><img class="footer-sclmd-icons" src="images\facebook2.png"></a></li>
                         <li><a href=""><img class="footer-sclmd-icons" src="images\instagram1.png"></a></li>
                         <li><a href=""><img class="footer-sclmd-icons" src="images\twitter2.png"></a></li>
