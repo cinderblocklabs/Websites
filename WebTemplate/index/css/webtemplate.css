@@ -36,10 +36,10 @@
         margin: 0px;
     }
     
-    header {
+    .header-mobile {
         text-align: center;
-        font-size: 50px;
-        height: 100px;
+        font-size: 24px;
+        height: 60px;
         width: 100%;
         margin-bottom: 0px;
     }
@@ -55,8 +55,9 @@
     }
     
     li {
-        font-size: 18px;
-        display: inline;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
     }
 
     ul {
@@ -155,40 +156,28 @@
     /*~~~~~~~~~~~~~~~~~~~~ NAVBAR ~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-    .navbar { 
-
+    .navbar-mobile { 
+/* 
+        display: flex;
+        flex-direction: column; */
         width: 100%;
         top: 0;
         position: fixed;
         overflow: hidden;
-
         text-align: center;
-        
-
         margin: 0px;
         z-index: 3;
+
     }
 
-    .navbar-blurred {
+    .navbar-unblurred-mobile {
         opacity: 1.0;
         /* BLUR */
         backdrop-filter: none;
     }
 
-    .navbar-centered {
-        float: none;
-        position: absolute;
-        /* top:50%; */
-        left:5%;
-        transform: translate();
-    }
-
     .navbar-logo { 
         visibility: hidden;
-    }
-    
-    .navbar-link {
-        opacity: 1.0;
     }
 
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
